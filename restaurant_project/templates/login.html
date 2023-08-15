@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Авторизация пользователя {% endblock %}
+
+{% block content %}
+<br>
+<br>
+
+<div id='form_con' class="container ">
+  <div class="row">
+    <div class="col col-lg-12">
+      <h4 class="text fw-bold text-center">Авторизация пользователя</h4>
+      <form class='register_form' enctype='multipart/form-data' action=""  method='POST'>
+        <br>
+        {% comment %} <h3 style='margin-left: 15px; color: #fff;' class="fw-bold">Регистрация пользователя</h3>
+        <hr style='background-color: Teal; height: 4px;'> {% endcomment %}
+        {% csrf_token %}
+        {{ form.non_field.errors }}
+        <div class="form-group">
+          <div class="col col-sm-12 col-lg-12 col-md-12 new_form">
+          <label style='margin-left: 15px; color: #fff;' for="{{ form.username.id_for_label }}" class="editContent text-center">Имя: </label>
+          <div class="">
+            {{ form.username }}
+          </div>
+          <div class="invalid-feedback">
+            {{ form.username.errors }}
+          </div>
+        </div>
+        </div>
+        <br>
+         <div class="form-group">
+            <div class="col col-sm-12 col-lg-12 col-md-12 form-group p-0 editContent password2 new_form" style=''>
+              <label for="{{ form.password.id_for_label }}" style='margin-left: 15px; color: #fff;' class="editContent">
+                 Пароль: 
+              </label>
+              {{ form.password }}
+              <div class="invalid-feedback">
+                {{ form.password.errors}}
+              </div>
+              <br>
+            </div>
+            <br>
+          </div>
+            </div>
+        </div>
+        <button type='submit' class='btn btn-outline-success'>Авторизоваться</button>
+        <br>
+        <br>
+      </form>
+<br>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Регистрация пользователя {% endblock %}
+
+{% block content %}
+<br>
+<br>
+
+<div id='form_con' class="container ">
+  <div class="row">
+    <div class="col col-lg-12">
+      <h4 class="text fw-bold text-center">Регистрация пользователя</h4>
+      <form class='register_form' enctype='multipart/form-data' action=""  method='POST'>
+        <br>
+        {% comment %} <h3 style='margin-left: 15px; color: #fff;' class="fw-bold">Регистрация пользователя</h3>
+        <hr style='background-color: Teal; height: 4px;'> {% endcomment %}
+        {% csrf_token %}
+        {{ form.non_field.errors }}
+        <div class="form-group">
+          <div class="col col-sm-12 col-lg-12 col-md-12 new_form">
+          <label style='margin-left: 15px; color: #fff;' for="{{ form.username.id_for_label }}" class="editContent text-center">Имя: </label>
+          <div class="">
+            {{ form.username }}
+          </div>
+          <div class="invalid-feedback">
+            {{ form.username.errors }}
+          </div>
+        </div>
+        </div>
+          <br>
+          <div class="form-group">
+            <div class="col col-sm-12 col-lg-12 col-md-12 form-group p-0 editContent email new_form" style=''>
+              <label style='margin-left: 15px; color: #fff;' for="{{ form.email.id_for_label }}" class="editContent">
+                Почта: 
+              </label>
+              {{ form.email }}
+              <div class="invalid-feedback">
+                {{ form.email.errors}}
+              </div>
+            </div>
+          </div>
+          <br>
+         <div class="form-group">
+            <div class="col col-sm-12 col-lg-12 col-md-12 form-group p-0 editContent password2 new_form" style=''>
+              <label for="{{ form.password1.id_for_label }}" style='margin-left: 15px; color: #fff;' class="editContent">
+                 Пароль: 
+              </label>
+              {{ form.password1 }}
+              <div class="invalid-feedback">
+                {{ form.password1.errors}}
+              </div>
+              <br>
+            </div>
+            <br>
+          </div>
+          <div class="form-group">
+            <div class="col col-sm-12 col-lg-12 col-md-12 form-group p-0 editContent password2 new_form" style=''>
+              <label for="{{ form.password2.id_for_label }}" style='margin-left: 15px; color: #fff;' class="editContent">
+                Подтверждение пароля: 
+              </label>
+              {{ form.password2 }}
+              <div class="invalid-feedback">
+                {{ form.password2.errors}}
+              </div>
+              <br>
+            </div>
+            <br>
+          </div>
+            </div>
+        </div>
+        <button type='submit' class='btn btn-outline-danger'>Зарегистрироваться</button>
+        <br>
+        <br>
+      </form>
+<br>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

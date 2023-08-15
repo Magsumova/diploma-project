@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Контакты
+{% endblock %}
+
+{% block content %}
+
+<br>
+<br>
+<div class="container dish_con">
+  <h3 class="fw-bold text text-center">Контакты</h3>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col col-lg-6">
+      <div id="map" style="width: 700px; height: 600px;"></div>
+    </div>
+  </div>
+  <p class="fw-bold"><span class="text">пр. Ленина д1</span><br>г.Москва</p>
+  <p class="fw-bold"><span class="text">пр. Ленина д2</span><br>г.Новосибирск</p>
+  <p class="fw-bold"><span class="text">пр. Ленина д3</span><br>г.Краснодар</p>
+  <div class="row">
+    <div class="col col-lg-6">
+      <form action="{% url 'add_review' %}" method='post' class='mt-4'>
+        {% csrf_token %}
+        <div class="form-group">
+          <label  class='text fw-bold' for="contactcomment" >
+            Ваш комментарий:
+          </label>
+          <textarea name="text" id="contactcomment" rows="5" required='' class="form-control border"></textarea>
+        </div>
+        <br>
+        <div class="d-sm-flex">
+          <div class="col col-sm-6 form-group p-0">
+            <label  class='text fw-bold' for="contactusername">Имя:</label>
+            <input name='name' type="text" id='contactusername' required='' class="form-control border">
+          </div>
+          <div class="col col-sm-6 form-group ml-sm-3" style='margin-left: 25px;'>
+            <label  class='text fw-bold' for="contactEmail">Email:</label>
+            <input name='email' type="email" id='contactemail' required='' class='form-control border'>
+          </div>
+        </div>
+        <br>
+        <button class="btn btn-outline-warning" type='submit'>
+          Отправить
+        </button>
+      </form>
+      <br>
+      <br>
+    </div>
+    <div class="col col-lg-12">
+      {% for item in review %}
+      <div class="" style='background-color: rgba(6, 5, 5, 0.957); border-radius: 25px;'>
+        <br>
+        <h4 style='margin-left: 5px;' class="fw-bold text">{{ item.name }}</h4>
+        <p style='margin-left: 5px;' class="fw-bold text">{{ item.created_at }}</p>
+        <hr>
+        <p style='margin-left: 5px;' class="fw-bold text">{{ item.text }}</p>
+        <p style='margin-left: 5px;' class="fw-bold text">{{ item.email }}</p>
+        <br>
+        <br>
+      </div>
+      <br>
+      <br>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

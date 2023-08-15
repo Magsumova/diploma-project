@@ -1,0 +1,88 @@
+
+body {
+  background-image: url(https://q1-restaurant.de/wp-content/uploads/2020/08/DSCF6270.jpg);
+  background-attachment: fixed;
+  width: 100%;
+  height: 60%;
+}
+
+.photo_food {
+  border-radius: 30px;
+  image-rendering: -webkit-optimize-contrast;
+  float: left;
+  margin-right: 5px;
+}
+
+.content_food {
+}
+
+.view_photo_food {
+  width: 300px;
+  height: 300px;
+  border-radius: 30px;
+  image-rendering: -webkit-optimize-contrast;
+  transition: 1s;
+}
+
+
+.card_food {
+  background-color: rgb(14, 12, 12);
+}
+
+.footer_food {
+  background-color: #5f3103;
+}
+
+.a_food {
+  color: white;
+}
+
+.a_food_01 {
+  color: white;
+}
+
+.a_food_01:hover {
+  color: #5f3103;
+  text-decoration: underline;
+}
+
+.a_food:hover {
+  color: green;
+  text-decoration: underline;
+}
+
+.view_photo_food:hover {
+  border-radius: 30px;
+  width: 375px;
+  height: 375px;
+   margin-left: auto;
+  image-rendering: -webkit-optimize-contrast;
+  margin-right: auto;
+  transition: 1s;
+}
+
+.price_food {
+  color: rgb(208, 208, 22);
+}
+
+.category_food {
+  color: rgb(250, 141, 7);
+}
+
+.text {
+  color: white;
+}
+
+.dish_con {
+  background-color: rgba(6, 5, 5, 0.957);
+  border-radius: 15px;
+}
+
+#form_con {
+  background-color: rgba(6, 5, 5, 0.957);
+  border-radius: 15px;
+}
+
+.text_nav:hover {
+  background-color: aqua;
+}

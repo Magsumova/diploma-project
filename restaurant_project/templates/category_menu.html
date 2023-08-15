@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Категория блюдо: {{ category.name }}
+{% endblock %}
+
+
+
+{% block content %}
+
+<br>
+<br>
+<h1 class="text-center fw-bold text">Ресторан Элегия</h1>
+<h1 id='fuc' class='text-center text'>Свежая И Вкусная Еда Для Вашего Здоровья!</h1>
+
+<p class="fw-bold text-center text">
+  Добро пожаловать в ресторан Элегия!
+  Студенческая жизнь бывает наполнена множеством интересных событий, поэтому на приготовление пищи совсем не остается времени. И каждый из вас наверно задавался вопросом, "У кого же заказать куриные котлетки" и мы нашли вам ответ. Это ресторан Элегия. 
+  <br>
+  Цены очень низкие, так что каждый может себе позволить бывать здесь довольно часто. Приготовление блюд не занимает много времени: обычно около 5-10 минут в зависимости от количества клиентов. Сам обед очень сытный, голодным мы вас точно не оставим.
+    <br>
+  Каждый найдет в меню что-то свое. Имеется широкий диапазон блюд от вегетарианского овощного салата до куриных котлеток, ваших любимых. С утра есть возможность купить уникальные экземпляры, такие как яйцо с беконом или омлет. 
+    <br>
+  Заказы приходит очень быстро, и это не зря.Мы подобрали профессиональных поваров, а так же курьеров, которые спеша придут к вам домой минимум за 10 минут. Конечно же, музыкальное сопровождение будет отсутствовать, но вы можете к нам приехать, ул.Ленинская. 
+    <br>
+  Нам очень нравится если вы будете делать заказы именно у нас! Если хотите сделать какой нибудь заказ, пожалуйста <a href="{% url 'register' %}">зарегистрируйтесь</a> на нешм сайте, или <a href="{% url 'login' %}">авторизуйтесь</a>
+</p>
+
+<br>
+<h3 class="fw-bold text-center text">Вкусная еда для вас</h3>
+<h4 class="fw-bold text-center text"><a class='a_food' href="{% url 'main' %}">Вернуться назад</a></h4>
+<div class="container fw-bold">
+  <div class="row">
+
+    <div class="col col-lg-12 text-center">
+      {% comment %} <li>
+        <a href="#" ><img src="https://img.icons8.com/pastel-glyph/64/000000/breakfast--v1.png"/></a>
+      </li>
+      <li>
+        <a class='a_food' href="#"><span class="fw-bold text text-center">Ужин</span></a>
+      </li>
+       <li>
+          <a href="#"><img src="https://img.icons8.com/glyph-neue/64/000000/coffee-pot.png"/></a>
+       </li>
+       <li>
+         <a class='a_food' href="#"> <span class="fw-bold text">Завтрак</span></a> 
+       </li>
+       <li>
+          <a href="#"><img src="https://img.icons8.com/ios-filled/50/000000/tableware.png"/></a>
+       </li>
+       <li>
+         <a class='a_food' href="#"><span class="fw-bold text">Обед</span></a> 
+       </li> {% endcomment %}
+       {% for item in categories %}
+
+        <li>
+           <a  href="{% url 'get_category_menu' item.pk %}"><img src="{{ item.url }}"/></a> <a class='a_food' href="{% url 'get_category_menu' item.pk %}"><p class="fw-bold text">{{ item.name }}</p></a> 
+       </li>
+
+       {% endfor %}
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+<br>
+<br>
+<div class="container dish_con">
+  <br>
+  <br>
+  <div class="row">
+    {% for item in menu_list %}
+    <div class="col col-lg-6 col-md-5 col-sm-4">
+       <div class="card card_food">
+          <div class="card-body">
+            <p class="fw-bold"> <img class='photo_food' src="{{ item.photo }}" width='250' height='250' alt=""><br><h4 class="fw-bold text"><a class='a_food' href="{{ item.get_absolute_url }}">{{ item.name }}</a></h4> <span class="content_food text">{{ item.content|truncatewords:30 }}</span></p>
+            <h4 class="fw-bold price_food">{{ item.price }} рублей</h3>
+          </div>
+          <div class="card-footer">
+            <h5 class="fw-bold text">Категория: <span class='category_food'>{{ item.category }}</span></p>
+          </div>
+        </div>
+        <br>
+        <br>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}

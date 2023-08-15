@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Блюдо: {{ dish_item.name }}
+{% endblock %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="container dish_con">
+  <h3 class="fw-bold text text-center">Блюдо {{ dish_item.name }}</h3>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col col-lg-9">
+      <img class='view_photo_food' src="{{ dish_item.photo }}" alt="">
+      <br>
+      <br>
+      <p class="fw-bold text">Название блюдо: {{ dish_item.name }}</p>
+      <p class="fw-bold text">Категория блюдо: <span class='category_food'>{{ dish_item.category }}</span></p>
+      <hr style='height: 2px; color: white;'>
+      <p class="fw-bold text">О блюдо: <br>{{ dish_item.content }}</p>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
